@@ -52,9 +52,6 @@
 
 function get_rbg_code(word) {
   long_code = data[word]
-  // console.log(long_code)
-  // console.log(word)
-  // console.log(long_code)
   
   r = (long_code%64)*3
   // console.log(r)
@@ -66,20 +63,49 @@ function get_rbg_code(word) {
   // console.log(b)
   return `(${r}, ${g}, ${b})`
 }
+let container = {'content' : ''}
+function handleInput(e) {
+  currentText = e.target.value.toLowerCase()
+  // log.textContent = e.target.value
+  // console.log(currentText)
+  const text_split = currentText.split(" ")
+  const block = []
+  // console.log(text_split)
 
-$(document).ready(function(){
-    $("#myTextarea").keyup(function(){
-        // Getting the current value of textarea
-        var currentText = $(this).val();
-      	console.log(currentText)
-      	const text_split = currentText.split(" ")
-        const block = []
-        console.log(text_split)
-        text_split.forEach(element => block.push("<span style='color:rgb"+get_rbg_code(element)+";'>█</span>"));
-        console.log(block)
-        
-        // Setting the Div content
-        //$(".output").text(block.join(''));
-        document.getElementById("content").innerHTML = block.join('');
-    });
-});
+  text_split.forEach((element) => {
+    if (element.match("^.*[\n]")){
+      extracted = element.match("([a-z]*)[\n]")[1]
+      block.push("<span style='color:rgb"+get_rbg_code(extracted)+";'>█</span>")
+      block.push("<br>")
+    } else{
+      block.push("<span style='color:rgb"+get_rbg_code(element)+";'>█</span>")
+    }
+
+  })
+  // console.log(block)
+  // console.log(block.join(''))
+  container['content'] = block.join('')
+  document.getElementById("content").innerHTML = container['content']
+}
+// console.log(container['content'])
+
+function submit() {
+  db.collection('posts').add({
+      post: container['content'],
+  });
+  console.log(container['content'])
+}
+// console.log(container)
+
+// form.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   db.collection('cafes').add({
+//       post: form.name.value,
+//   });
+//   form.name.value = '';
+//   form.city.value = '';
+// });
+
+// const txtarea = document.getElementById("myTextarea")
+// console.log(document.getElementById("myTextarea").value)
+
