@@ -12,8 +12,8 @@ function changeBodyBg(color){
 function changeBodyBack(){
   document.body.style.background = 'white';
   document.getElementById("content").style.backgroundColor = '#f1f1f1';
-  document.getElementById("myTextarea").style.backgroundColor = '#f4e4e9';
-  document.getElementById("content").style.borderColor = 'white';
+  document.getElementById("myTextarea").style.backgroundColor = 'white';
+  document.getElementById("content").style.borderColor = '#f4e4e9';
   document.getElementById("myTextarea").style.borderColor = 'white';
 }
 
