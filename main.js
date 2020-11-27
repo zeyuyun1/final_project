@@ -33,7 +33,7 @@ function handleInput(e) {
       // block.push("<span style='color:rgb"+get_rbg_code(extracted)+";'>█</span>")
       block.push("<span style='color:"+get_color(element)+";'>█</span>")
       block.push("<br>")
-      changeBodyBack()
+      changeBodyBg(get_color(element))
       
     } else{
       // block.push("<span style='color:rgb"+get_rbg_code(element)+";'>█</span>")
@@ -42,12 +42,9 @@ function handleInput(e) {
     changeBodyBg(get_color(element))
     console.log(block)
   })
-  // console.log(block)
-  // console.log(block.join(''))
   container['content'] = block.join('')
   document.getElementById("content").innerHTML = container['content']
 }
-// console.log(container['content'])
 
 function submit() {
   db.collection('posts').add({
@@ -55,4 +52,3 @@ function submit() {
   });
   console.log(container['content'])
 }
-// console.log(container)
