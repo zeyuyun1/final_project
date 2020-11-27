@@ -40,6 +40,7 @@ function handleInput(e) {
       block.push("<span style='color:"+get_color(element)+";'>█</span>")
     }
     changeBodyBg(get_color(element))
+    console.log(block)
   })
   // console.log(block)
   // console.log(block.join(''))
@@ -55,16 +56,3 @@ function submit() {
   console.log(container['content'])
 }
 // console.log(container)
-
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   db.collection('cafes').add({
-//       post: form.name.value,
-//   });
-//   form.name.value = '';
-//   form.city.value = '';
-// });
-
-// const txtarea = document.getElementById("myTextarea")
-// console.log(document.getElementById("myTextarea").value)
-
