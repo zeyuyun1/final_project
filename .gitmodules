@@ -1,0 +1,3 @@
+[submodule "HiChat"]
+	path = HiChat
+	url = https://github.com/zeyuyun1/HiChat.git
